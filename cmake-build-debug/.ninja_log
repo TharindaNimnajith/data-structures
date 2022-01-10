@@ -1,0 +1,5 @@
+# ninja log v5
+0	967	6635510847585287	CMakeFiles/data_structures.dir/BinaryTree.cpp.obj	7a2953ab3c3cf1b8
+24	980	6635510847725283	CMakeFiles/data_structures.dir/CircularArray.cpp.obj	e3a693d89dc031d
+28	981	6635510847725283	CMakeFiles/data_structures.dir/DynamicGrowthArray.cpp.obj	cd73b286509940c7
+32	993	6635510847865298	CMakeFiles/data_structures.dir/LinkedList.cpp.obj	5d252084801ab999
