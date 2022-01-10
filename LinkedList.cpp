@@ -1,40 +1,32 @@
 #include <iostream>
 
-class Node
-{
+class Node {
 public:
     int data;
 
     Node *next;
 
-    Node(int value);
+    explicit Node(int value);
 
-    Node getNext();
-
-    ~Node();
+    ~Node() = default;
 };
 
-Node::Node(int value)
-{
+Node::Node(int value) {
     data = value;
     next = nullptr;
 }
 
-Node::~Node()
-{
-}
 
-class LinkedList
-{
+class LinkedList {
 private:
     Node *head;
 
     int size = 1;
 
 public:
-    LinkedList(int value);
+    explicit LinkedList(int value);
 
-    int getSize();
+    int getSize() const;
 
     void add(int value);
 
@@ -44,39 +36,32 @@ public:
 
     void showList();
 
-    ~LinkedList();
+    ~LinkedList() = default;
 };
 
-LinkedList::LinkedList(int value)
-{
+LinkedList::LinkedList(int value) {
     head = new Node(value);
 }
 
-void LinkedList::add(int value)
-{
+void LinkedList::add(int value) {
     size++;
     Node *newNode = new Node(value);
     newNode->next = head;
     head = newNode;
 }
 
-void LinkedList::deleteByIndex(int index)
-{
+void LinkedList::deleteByIndex(int index) {
     int tempIndex = 0;
     Node *temp = head;
     Node *previous;
 
-    for (int i = 0; i < size; i++)
-    {
-        if (index == 0)
-        {
+    for (int i = 0; i < size; i++) {
+        if (index == 0) {
             head = temp->next;
             size--;
             delete temp;
             break;
-        }
-        else if (tempIndex == index)
-        {
+        } else if (tempIndex == index) {
             previous->next = temp->next;
             size--;
             delete temp;
@@ -88,21 +73,16 @@ void LinkedList::deleteByIndex(int index)
     }
 }
 
-void LinkedList::addByIndex(int index, int value)
-{
+void LinkedList::addByIndex(int index, int value) {
     int tempIndex = 0;
     Node *temp = head;
     Node *previous;
 
-    for (int i = 0; i < size; i++)
-    {
-        if (index == 0)
-        {
+    for (int i = 0; i < size; i++) {
+        if (index == 0) {
             add(value);
             break;
-        }
-        else if (tempIndex == index)
-        {
+        } else if (tempIndex == index) {
             Node *rest = temp;
             temp = new Node(value);
             temp->next = rest;
@@ -116,29 +96,22 @@ void LinkedList::addByIndex(int index, int value)
     }
 }
 
-int LinkedList::getSize()
-{
+int LinkedList::getSize() const {
     return size;
 }
 
-void LinkedList::showList()
-{
+void LinkedList::showList() {
     Node *temp;
     temp = head;
-    for (int i = 0; i < size; i++)
-    {
+    for (int i = 0; i < size; i++) {
         std::cout << temp->data << std::endl;
         temp = temp->next;
     }
     std::cout << std::endl;
 }
 
-LinkedList::~LinkedList()
-{
-}
 
-int main()
-{
+int main() {
     LinkedList linkedList(2);
     linkedList.add(3);
     linkedList.add(4);

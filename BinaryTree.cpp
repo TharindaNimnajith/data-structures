@@ -1,7 +1,10 @@
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunknown-pragmas"
+#pragma ide diagnostic ignored "UnusedValue"
+
 #include <iostream>
 
-class Node
-{
+class Node {
 public:
     Node *right;
 
@@ -9,62 +12,49 @@ public:
 
     int data;
 
-    Node(int value);
+    explicit Node(int value);
 
-    ~Node();
+    ~Node() = default;
 };
 
-Node::Node(int value)
-{
+Node::Node(int value) {
     data = value;
     right = nullptr;
     left = nullptr;
 }
 
-Node::~Node()
-{
-}
 
-class BinaryTree
-{
+class BinaryTree {
 private:
     Node *root;
 
 public:
-    BinaryTree(int value);
+    explicit BinaryTree(int value);
 
     void add(int value);
 
     void show();
 
-    ~BinaryTree();
+    ~BinaryTree() = default;
 };
 
-BinaryTree::BinaryTree(int value)
-{
+BinaryTree::BinaryTree(int value) {
     root = new Node(value);
 }
 
-void BinaryTree::add(int value)
-{
+void BinaryTree::add(int value) {
     Node *newNode = new Node(value);
     Node *tempNode = root;
     Node *tempPreviousNode = root;
-    while (tempNode != nullptr)
-    {
-        if (value > tempNode->data)
-        {
+    while (tempNode != nullptr) {
+        if (value > tempNode->data) {
             tempNode = tempNode->left;
-            if (tempNode == nullptr)
-            {
+            if (tempNode == nullptr) {
                 tempPreviousNode->left = newNode;
             }
-        }
-        else
-        {
+        } else {
             tempNode = tempNode->right;
-            if (tempNode == nullptr)
-            {
+            if (tempNode == nullptr) {
                 tempPreviousNode->right = newNode;
             }
         }
@@ -76,17 +66,14 @@ void BinaryTree::add(int value)
     delete tempPreviousNode;
 }
 
-void BinaryTree::show()
-{
+void BinaryTree::show() {
     Node *tempNode = root;
-    while (tempNode != nullptr)
-    {
+    while (tempNode != nullptr) {
         std::cout << tempNode->data << std::endl;
         tempNode = tempNode->right;
     }
     tempNode = root->left;
-    while (tempNode != nullptr)
-    {
+    while (tempNode != nullptr) {
         std::cout << tempNode->data << std::endl;
         tempNode = tempNode->left;
     }
@@ -94,12 +81,8 @@ void BinaryTree::show()
     tempNode = nullptr;
 }
 
-BinaryTree::~BinaryTree()
-{
-}
 
-int main()
-{
+int main() {
     BinaryTree binaryTree(4);
     binaryTree.add(3);
     binaryTree.add(5);
@@ -108,3 +91,5 @@ int main()
     binaryTree.show();
     return 0;
 }
+
+#pragma clang diagnostic pop

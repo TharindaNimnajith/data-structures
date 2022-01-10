@@ -1,16 +1,17 @@
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunknown-pragmas"
+#pragma ide diagnostic ignored "UnusedValue"
+
 #include <iostream>
 
-void print(char *a, int n, int index)
-{
-    for (int i = index; i < n + index; i++)
-    {
+void print(char *a, int n, int index) {
+    for (int i = index; i < n + index; i++) {
         std::cout << a[i % n] << " ";
     }
     std::cout << std::endl;
 }
 
-int main()
-{
+int main() {
     char a[] = {'1', '2', '3', '4'};
     char *b = a;
     int n = sizeof(a) / sizeof(a[0]);

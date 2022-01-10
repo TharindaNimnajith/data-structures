@@ -1,7 +1,6 @@
 #include <iostream>
 
-class DynamicGrowthArray
-{
+class DynamicGrowthArray {
 private:
     int m_index;
 
@@ -14,9 +13,9 @@ private:
 public:
     DynamicGrowthArray(int size, int step);
 
-    int getIndex();
+    int getIndex() const;
 
-    int getMax();
+    int getMax() const;
 
     void insert(int element);
 
@@ -29,50 +28,41 @@ public:
     ~DynamicGrowthArray();
 };
 
-DynamicGrowthArray::DynamicGrowthArray(int size, int step)
-{
+DynamicGrowthArray::DynamicGrowthArray(int size, int step) {
     m_array = new int[size];
     m_index = 0;
     m_max = size;
     m_step = step;
 }
 
-int DynamicGrowthArray::getIndex()
-{
+int DynamicGrowthArray::getIndex() const {
     return m_index;
 }
 
-int DynamicGrowthArray::getMax()
-{
+int DynamicGrowthArray::getMax() const {
     return m_max;
 }
 
-void DynamicGrowthArray::insert(int element)
-{
-    if (m_index >= m_max)
-    {
+void DynamicGrowthArray::insert(int element) {
+    if (m_index >= m_max) {
         resize();
     }
     m_array[m_index] = element;
     m_index++;
 }
 
-void DynamicGrowthArray::remove(int index)
-{
-    if (index > m_index || index < 0)
-    {
+void DynamicGrowthArray::remove(int index) {
+    if (index > m_index || index < 0) {
         std::cout << "Invalid index" << std::endl;
         return;
     }
-    for (int i = index; i <= m_index; i++)
-    {
+    for (int i = index; i <= m_index; i++) {
         m_array[i] = m_array[i + 1];
     }
     m_index--;
 }
 
-void DynamicGrowthArray::resize()
-{
+void DynamicGrowthArray::resize() {
     // m_max += m_step;
     // int* temp = new int[m_max];
     // for (int i = 0; i < m_index; i++)
@@ -90,22 +80,18 @@ void DynamicGrowthArray::resize()
     m_array = tempArr;
 }
 
-void DynamicGrowthArray::display()
-{
-    for (int i = 0; i < m_index; i++)
-    {
+void DynamicGrowthArray::display() {
+    for (int i = 0; i < m_index; i++) {
         std::cout << m_array[i] << " ";
     }
     std::cout << std::endl;
 }
 
-DynamicGrowthArray::~DynamicGrowthArray()
-{
+DynamicGrowthArray::~DynamicGrowthArray() {
     delete[] m_array;
 }
 
-int main()
-{
+int main() {
     int size = 4;
     int resize = 2;
 
@@ -122,8 +108,7 @@ int main()
 
     dynamicGrowthArray.display();
 
-    std::cout << dynamicGrowthArray.getIndex() << std::endl
-              << dynamicGrowthArray.getMax();
+    std::cout << dynamicGrowthArray.getIndex() << std::endl << dynamicGrowthArray.getMax();
 
     return 0;
 }
